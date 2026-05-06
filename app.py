@@ -103,11 +103,11 @@ with st.sidebar:
         else:
             st.markdown(f"⚪ {name}")
     st.markdown("---")
-    st.image(cartoon_img[st.session_state.step], width="100%")
+    st.image(cartoon_img[st.session_state.step], width=200)
     st.caption("英歌舞小教头陪你学功夫～")
 
 # --------------------------
-# 4. 核心教学页面（所有use_column_width已替换为width="100%"）
+# 4. 核心教学页面（全部修复 width 报错）
 # --------------------------
 
 # 第0步：诊学（首页强提醒）
@@ -116,7 +116,7 @@ if st.session_state.step == 0:
     with col_text:
         st.title("诊学·了解你的基础")
         st.subheader("你之前练过英歌舞内旋槌吗？")
-        st.info(" 全程有国家级传承人认证的AI教学助教陪伴，点击右下角卡通小人，随时提问、动作纠错！")
+        st.info("全程有国家级传承人认证的AI教学助教陪伴，点击右下角卡通小人，随时提问、动作纠错！")
         if st.button("没练过，从头学完整体系"):
             st.session_state.branch = "new"
             st.session_state.step = 1
@@ -124,7 +124,7 @@ if st.session_state.step == 0:
             st.session_state.branch = "experienced"
             st.session_state.step = 3
     with col_cartoon:
-        st.image(cartoon_img[0], width="100%")
+        st.image(cartoon_img[0], width=200)
         st.caption("英歌舞小教头陪你从零学起～")
     st.caption("有问题，可以点击右下角卡通小人，打开与AI对话沟通哦")
 
@@ -142,7 +142,7 @@ elif st.session_state.step == 1 and st.session_state.branch == "new":
         if st.button("看完了，进入拆解学习"):
             st.session_state.step = 2
     with col_cartoon:
-        st.image(cartoon_img[1], width="100%")
+        st.image(cartoon_img[1], width=200)
         st.caption("跟着大师的动作，记住核心要点哦～")
     st.caption("有问题，可以点击右下角卡通小人，打开与AI对话沟通哦")
 
@@ -152,16 +152,16 @@ elif st.session_state.step == 2 and st.session_state.branch == "new":
     col1, col2, col3, col4 = st.columns(4)
     with col1:
         st.subheader("第1步 预备握槌")
-        st.image(step1_img, width="100%")
+        st.image(step1_img, width=180)
     with col2:
         st.subheader("第2步 内旋启动")
-        st.image(step2_img, width="100%")
+        st.image(step2_img, width=180)
     with col3:
         st.subheader("第3步 水平定位")
-        st.image(step3_img, width="100%")
+        st.image(step3_img, width=180)
     with col4:
         st.subheader("第4步 还原定型")
-        st.image(step4_img, width="100%")
+        st.image(step4_img, width=180)
     if st.button("分步都学会了，进入陪练对比环节"):
         st.session_state.step = 3
     st.caption("有问题，可以点击右下角卡通小人，打开与AI对话沟通哦")
@@ -172,14 +172,14 @@ elif st.session_state.step == 3:
     col_standard, col_user, col_cartoon = st.columns([2, 2, 1])
     with col_standard:
         st.subheader("标准动作参考")
-        st.image(standard_img, width="100%")
+        st.image(standard_img, width=250)
     with col_user:
         st.subheader("你的动作定格")
         user_img = st.file_uploader("上传你的动作照片", type=["png", "jpg", "jpeg"])
         if user_img:
-            st.image(user_img, width="100%")
+            st.image(user_img, width=250)
     with col_cartoon:
-        st.image(cartoon_img[3], width="100%")
+        st.image(cartoon_img[3], width=200)
     st.markdown("---")
     st.markdown("### 跟练节奏口令")
     st.code("准备！1——握槌稳桩；2——手腕内旋；3——水平控槌；4——还原定型！")
@@ -208,7 +208,7 @@ elif st.session_state.step == 4:
             st.session_state.step = 0
             st.session_state.branch = "new"
     with col_cartoon:
-        st.image(cartoon_img[4], width="100%")
+        st.image(cartoon_img[4], width=200)
     st.caption("有问题，可以点击右下角卡通小人，打开与AI对话沟通哦")
 
 # --------------------------
